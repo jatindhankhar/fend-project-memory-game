@@ -1,13 +1,17 @@
 <!doctype html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8">
     <title>Matching Game</title>
     <meta name="description" content="">
-    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-    <link rel="stylesheet prefetch" href="https://fonts.googleapis.com/css?family=Coda">
+    <link rel="stylesheet prefetch" href="//maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link rel="stylesheet prefetch" href="//fonts.googleapis.com/css?family=Coda">
+    <link rel="stylesheet prefetch" href="//cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css" integrity="sha256-j+P6EZJVrbXgwSR5Mx+eCS6FvP9Wq27MBRC/ogVriY0="
+        crossorigin="anonymous" />
     <link rel="stylesheet" href="css/app.css">
 </head>
+
 <body>
 
     <div class="container">
@@ -16,27 +20,32 @@
         </header>
 
         <section class="score-panel">
-        	<ul class="stars">
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        	</ul>
+            <ul class="stars">
+                <li>
+                    <i class="fa fa-star fa-2x"></i>
+                </li>
+                <li>
+                    <i class="fa fa-star fa-2x"></i>
+                </li>
+                <li>
+                    <i class="fa fa-star fa-2x"></i>
+                </li>
+            </ul>
 
-        	<span class="moves">3</span> Moves
-
-            <div class="restart">
-        		<i class="fa fa-repeat"></i>
-        	</div>
+            <span class="moves" id="move-counter">3</span> Moves
+            <div class="restart" id="restart-button">
+                <i class="fa fa-repeat fa-2x"></i>
+            </div>
         </section>
 
-        <ul class="deck">
+        <ul class="deck" id="card-grid">
             <li class="card">
                 <i class="fa fa-diamond"></i>
             </li>
             <li class="card">
                 <i class="fa fa-paper-plane-o"></i>
             </li>
-            <li class="card match">
+            <li class="card">
                 <i class="fa fa-anchor"></i>
             </li>
             <li class="card">
@@ -45,7 +54,7 @@
             <li class="card">
                 <i class="fa fa-cube"></i>
             </li>
-            <li class="card match">
+            <li class="card">
                 <i class="fa fa-anchor"></i>
             </li>
             <li class="card">
@@ -66,7 +75,7 @@
             <li class="card">
                 <i class="fa fa-bomb"></i>
             </li>
-            <li class="card open show">
+            <li class="card">
                 <i class="fa fa-bolt"></i>
             </li>
             <li class="card">
@@ -83,4 +92,5 @@
 
     <script src="js/app.js"></script>
 </body>
+
 </html>
