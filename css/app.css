@@ -88,33 +88,125 @@ h1 {
     font-size: 33px;
 }
 
-/*
- * Styles for the Score Panel
- */
+.disabled {
+    pointer-events: none;
+    opacity: 0.8;
+    background: grey;
+}
 
-.score-panel {
-    text-align: left;
-    width: 345px;
+/** Alternate Score Panel Styling **/
+
+.alt-score-panel {
+    width: 660px;
+    padding: 20px;
+    background: linear-gradient(29deg, #aee7b15c 0%, #c86f6fb5 100%);
+    border-radius: 10px;
     margin-bottom: 10px;
+    display: flex;
+    justify-content: space-between;
+    justify-items: center;
+    box-shadow: inset 1px 5px 20px 8px rgba(46, 61, 73, 0.5)
 }
 
-.score-panel .stars {
-    margin: 0;
-    padding: 0;
-    display: inline-block;
-    margin: 0 5px 0 0;
+.alt-score-panel .alt-stars .fa-star {
+    color: gold;
 }
 
-.score-panel .stars li {
-    list-style: none;
-    display: inline-block;
+.alt-score-panel .alt-score-panel-text {
+    font-size: 2.5em;
 }
 
-.score-panel .restart {
-    float: right;
+.alt-score-panel .alt-score-panel-icon-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    justify-items: center;
     cursor: pointer;
 }
 
-.score-panel .stars .fa {
+/** Overlay styling 
+ Thanks -> https://www.w3schools.com/howto/howto_js_fullscreen_overlay.asp
+**/
+
+.overlay {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    overflow-x: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.55);
+    transition: 0.4s;
+}
+
+.overlay a {
+    padding: 8px;
+    text-decoration: none;
+    font-size: 36px;
+    color: grey;
+    display: block;
+    transition: 0.3s;
+}
+
+.overlay a:hover,
+.overlay a:focus {
+    color: #f1f1f1;
+}
+
+.overlay .overlay-content {
+    background-color: white;
+    position: relative;
+    width: 70%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    margin: 30px;
+    padding: 30px;
+}
+
+.overlay-content .fa-check-circle {
+    color: green;
+}
+
+.overlay .close-button {
+    position: absolute;
+    top: 20px;
+    right: 45px;
+    font-size: 60px;
+}
+
+.overlay .overlay-content h3 .fa:before {
+    margin-right: 25px;
+}
+
+.overlay .overlay-content .winner-headline {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.overlay .overlay-content .winner-headline i {
+    margin-right: 60px;
+}
+
+.overlay .overlay-content .result-row {
+    display: flex;
+    align-self: center;
+    align-items: center;
+}
+
+.overlay .overlay-content button {
+    background-color: #02b3e4;
+    color: white;
+    font-size: 2em;
+    padding: 30px;
+    cursor: pointer;
+}
+
+.overlay .fa-star {
     color: gold;
 }
