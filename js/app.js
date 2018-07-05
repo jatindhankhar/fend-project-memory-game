@@ -16,6 +16,8 @@ const shuffle_button = document.getElementById("shuffle-button");
 const pause_play_button = document.getElementById("pause-play-button");
 const prompt_screen = document.getElementById("prompt-screen");
 const timer_display = document.getElementById("timer-display");
+let card_timer;
+
 let time = {
   seconds: 0,
   minutes: 0,
@@ -173,6 +175,8 @@ function startTimers() {
 }
 // Reduce a star every after every 1 minutes or 60000 ms
 function reduceStars() {
+  //Reset timer before setting new one
+  stopStarTimer();
   goldStarTimer = setTimeout(dimStar, 1000 * 60);
 }
 
@@ -235,6 +239,8 @@ function zeroPad(moment) {
 }
 
 function startTimer() {
+  // Clear timers 
+  stopTimer();
   // Timeout of 1000 ms or 1s;
   timer = setTimeout(tickTock, 1000);
 }
@@ -299,19 +305,21 @@ function lockCards(openCard, newCard) {
   checkGameEnding();
 }
 
+function removeClasses(openCard,newCard)
+{
+  newCard.classList.remove("show", "open", "animated", "shake");
+  openCard.classList.remove("show", "open", "animated", "shake");
+}
 function hideCards(openCard, newCard) {
   newCard.classList.add("animated", "shake");
   openCard.classList.add("animated", "shake");
-  setTimeout(function () {
-    newCard.classList.remove("show", "open", "animated", "shake");
-    openCard.classList.remove("show", "open", "animated", "shake");
-    // Reset open card
-    open_card = undefined;
-  }, 500);
+  card_timer =  setTimeout(removeClasses, 500,openCard,newCard);
+  // Reset open card
+  open_card = undefined;
 }
 
 function addCard(card) {
-  if (open_card == undefined) {
+  if (open_card === undefined) {
     open_card = card;
   } else {
     // Try matching card
@@ -325,16 +333,25 @@ function addCard(card) {
 }
 
 function showCard(card) {
+  if(!(card === undefined)){
   card.classList.add("show", "open");
   updateMoveCounter();
   addCard(card);
+  }
 }
 
 function handleCardClick(evt) {
   let click_target = evt.target;
   if (click_target.classList.contains("match") || click_target == this) {
     // Don't process if already matched or if grid itself is clicked
-  } else {
+    return;
+  }
+  else if(open_card === evt.target)
+    {
+      // Dont' proces if same card is clicked again
+      return;
+    }
+   else {
     showCard(click_target);
   }
 }
